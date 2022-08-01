@@ -7,7 +7,8 @@ class CityExplorer extends React.Component {
         super(props);
         this.state = {
             data: null,
-            city: ''
+            city: '',
+            error: ''
         };
     }
 
@@ -20,11 +21,19 @@ class CityExplorer extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.city}&format=json`;
-        let response = await axios.get(url);
+        
+        try {
+            let response = await axios.get(url);
 
-        this.setState({
-            data: response.data[0]
-        });
+            this.setState({
+                data: response.data[0],
+                error: ''
+            });
+        } catch(error) {
+            this.setState({
+                error: error
+            });
+        }
     }
 
     render() {
@@ -43,6 +52,15 @@ class CityExplorer extends React.Component {
                             Longitude: {this.state.data.lon}
                         </p>
                         <img className="map-image" alt="map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.state.data.lat},${this.state.data.lon}&zoom=12`}></img>
+                    </main>
+                }
+                {
+                    (this.state.error) &&
+                    <main className="blur">
+                        <h3>Uh oh!</h3>
+                        <p>
+                            Error: {this.state.error.response.data.error}
+                        </p>
                     </main>
                 }
             </>
