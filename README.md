@@ -17,7 +17,7 @@
 08-01-2022 - Project initialized; API keys and Netlify deployment are set up.
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Background: <https://www.wallpaperflare.com/digital-digital-art-artwork-illustration-abstract-neon-wallpaper-gjjgo/download>
 
 ## Features
 
@@ -25,8 +25,8 @@
 
 Estimate of time needed to complete: 30 minutes
 
-Start time:
+Start time: 2 PM
 
-Finish time:
+Finish time: 3 PM
 
-Actual time needed to complete:
+Actual time needed to complete: 1 hour

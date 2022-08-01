@@ -1,5 +1,6 @@
 import React from "react";
 import './CityExplorer.css';
+import axios from 'axios';
 
 class CityExplorer extends React.Component {
     constructor(props) {
@@ -10,12 +11,40 @@ class CityExplorer extends React.Component {
         };
     }
 
+    handleSearchChange = (event) => {
+        this.setState({
+            city: event.target.value
+        })
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault();
+        let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.city}&format=json`;
+        let response = await axios.get(url);
+        console.log(response.data[0]);
+        this.setState({
+            data: response.data[0]
+        });
+    }
+
     render() {
         return (
-            <form>
-                <input type="text" />
-                <button type="submit">Search</button>
-            </form>
+            <>
+                <form className="flex blur" onSubmit={this.handleSubmit}>
+                    <ion-icon name="search"></ion-icon>
+                    <input className="search-input" type="text" placeholder="Seach for cities..." onChange={this.handleSearchChange} />
+                </form>
+                {
+                    this.state.data &&
+                    <main className="blur">
+                        <h3>{this.state.data.display_name}</h3>
+                        <p>
+                            Latitude: {this.state.data.lat}<br/>
+                            Longitude: {this.state.data.lon}
+                        </p>
+                    </main>
+                }
+            </>
         );
     }
 }
