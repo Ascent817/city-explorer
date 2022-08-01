@@ -21,7 +21,7 @@ class CityExplorer extends React.Component {
         event.preventDefault();
         let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.city}&format=json`;
         let response = await axios.get(url);
-        console.log(response.data[0]);
+
         this.setState({
             data: response.data[0]
         });
@@ -30,7 +30,7 @@ class CityExplorer extends React.Component {
     render() {
         return (
             <>
-                <form className="flex blur" onSubmit={this.handleSubmit}>
+                <form className="flex blur search" onSubmit={this.handleSubmit}>
                     <ion-icon name="search"></ion-icon>
                     <input className="search-input" type="text" placeholder="Seach for cities..." onChange={this.handleSearchChange} />
                 </form>
@@ -42,6 +42,7 @@ class CityExplorer extends React.Component {
                             Latitude: {this.state.data.lat}<br/>
                             Longitude: {this.state.data.lon}
                         </p>
+                        <img className="map-image" alt="map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.state.data.lat},${this.state.data.lon}&zoom=12`}></img>
                     </main>
                 }
             </>

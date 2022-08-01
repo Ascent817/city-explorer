@@ -30,3 +30,13 @@ Start time: 2 PM
 Finish time: 3 PM
 
 Actual time needed to complete: 1 hour
+
+### Feature #2: Map Images
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 3 PM
+
+Finish time: 3:45 PM
+
+Actual time needed to complete: 45 minutes

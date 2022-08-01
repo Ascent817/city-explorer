@@ -1,15 +1,26 @@
 .search-input {
-    border: 1px solid rgba(189, 189, 189, 0.363);
-    border-radius: 40px;
-    height: 40px;
     outline: none;
+    border: none;
+    background-color: transparent;
+    color: white;
+    flex: 1 1;
+    height: 40px;
+    position: relative;
+    left: -15px;
+}
+
+.search {
     padding: 5px 20px 5px 35px;
     width: 50vh;
     background-color: rgba(196, 196, 196, 0.356);
     color: white;
+    border: 1px solid rgba(189, 189, 189, 0.363);
+    border-radius: 40px;
+    height: 40px;
 }
 
 .flex {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -19,7 +30,7 @@
 form ion-icon {
     color: rgba(255, 255, 255, 0.575);
     position: relative;
-    left: 35px;
+    left: -20px;
     backdrop-filter: none;
 }
 
@@ -35,4 +46,9 @@ main {
     border-radius: 40px;
     padding: 20px;
     margin: 10px;
+}
+
+.map-image {
+    width: 100%;
+    border-radius: 20px;
 }
