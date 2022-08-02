@@ -15,6 +15,7 @@
 ## Change Log
 
 08-01-2022 - Project initialized; API keys and Netlify deployment are set up.
+08-01-2022 - Features #1-3 are complete
 
 ## Credit and Collaborations
 Background: <https://www.wallpaperflare.com/digital-digital-art-artwork-illustration-abstract-neon-wallpaper-gjjgo/download>
@@ -40,3 +41,13 @@ Start time: 3 PM
 Finish time: 3:45 PM
 
 Actual time needed to complete: 45 minutes
+
+### Feature #3: Error Handling
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 6:30 PM
+
+Finish time: 7 PM
+
+Actual time needed to complete: 30 minutes
