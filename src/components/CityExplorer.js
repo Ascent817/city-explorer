@@ -1,12 +1,15 @@
 import React from "react";
 import './CityExplorer.css';
 import axios from 'axios';
+import CityDisplay from "./CityDisplay";
+import { ErrorDisplay } from "./ErrorDisplay";
 
 class CityExplorer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             data: null,
+            weatherData: null,
             city: '',
             error: ''
         };
@@ -21,15 +24,17 @@ class CityExplorer extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.city}&format=json`;
-        
+
         try {
             let response = await axios.get(url);
+            let weatherData = await axios.get(`https://city-explorer-server-ascent817.herokuapp.com/weather?searchQuery=${this.state.city}`)
 
             this.setState({
                 data: response.data[0],
-                error: ''
+                error: '',
+                weatherData: weatherData
             });
-        } catch(error) {
+        } catch (error) {
             this.setState({
                 error: error
             });
@@ -45,22 +50,21 @@ class CityExplorer extends React.Component {
                 </form>
                 {
                     (this.state.data && !this.state.error) &&
-                    <main className="blur">
-                        <h3>{this.state.data.display_name}</h3>
-                        <p>
-                            Latitude: {this.state.data.lat}<br/>
-                            Longitude: {this.state.data.lon}
-                        </p>
-                        <img className="map-image" alt="map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.state.data.lat},${this.state.data.lon}&zoom=12`}></img>
-                    </main>
+                    <CityDisplay data={this.state.data}></CityDisplay>
                 }
                 {
                     this.state.error &&
+                    <ErrorDisplay error={this.state.error.response.data.error}></ErrorDisplay>
+                }
+                {
+                    (this.state.weatherData && !this.state.error) &&
                     <main className="blur">
-                        <h3>Uh oh!</h3>
+                        <h3>Weather Title</h3>
                         <p>
-                            Error: {this.state.error.response.data.error}
+                            The high for today is %high_temp%, with a low of %low_temp%.
+                            There is %clouds%% cloud cover and the wind is blowing %windDir%.
                         </p>
+                        <p>%date%</p>
                     </main>
                 }
             </>
