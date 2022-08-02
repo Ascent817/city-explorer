@@ -9,6 +9,10 @@
     left: -15px;
 }
 
+.search-input::placeholder {
+    color: white;
+}
+
 .search {
     padding: 5px 20px 5px 35px;
     width: 50vh;
@@ -24,7 +28,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out 0ms;
 }
 
 form ion-icon {
