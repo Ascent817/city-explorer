@@ -41,10 +41,10 @@ class CityExplorer extends React.Component {
             <>
                 <form className="flex blur search" onSubmit={this.handleSubmit}>
                     <ion-icon name="search"></ion-icon>
-                    <input className="search-input" type="text" placeholder="Seach for cities..." onChange={this.handleSearchChange} />
+                    <input className="search-input" type="text" onChange={this.handleSearchChange} />
                 </form>
                 {
-                    this.state.data &&
+                    (this.state.data && !this.state.error) &&
                     <main className="blur">
                         <h3>{this.state.data.display_name}</h3>
                         <p>
@@ -55,7 +55,7 @@ class CityExplorer extends React.Component {
                     </main>
                 }
                 {
-                    (this.state.error) &&
+                    this.state.error &&
                     <main className="blur">
                         <h3>Uh oh!</h3>
                         <p>
