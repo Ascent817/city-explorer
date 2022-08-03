@@ -1,8 +1,10 @@
 import React from "react";
 import './CityExplorer.css';
 import axios from 'axios';
-import CityDisplay from "./CityDisplay";
-import { ErrorDisplay } from "./ErrorDisplay";
+import CityDisplay from "./CityDisplay.js";
+import ErrorDisplay from "./ErrorDisplay.js";
+import WeatherDisplay from "./WeatherDisplay.js";
+
 
 class CityExplorer extends React.Component {
     constructor(props) {
@@ -27,12 +29,13 @@ class CityExplorer extends React.Component {
 
         try {
             let response = await axios.get(url);
-            let weatherData = await axios.get(`https://city-explorer-server-ascent817.herokuapp.com/weather?searchQuery=${this.state.city}`)
+            let weatherData = await axios.get(`https://city-explorer-server-ascent817.herokuapp.com/weather?searchQuery=${this.state.city}`);
+            console.log(weatherData.data);
 
             this.setState({
                 data: response.data[0],
                 error: '',
-                weatherData: weatherData
+                weatherData: weatherData.data
             });
         } catch (error) {
             this.setState({
@@ -58,14 +61,11 @@ class CityExplorer extends React.Component {
                 }
                 {
                     (this.state.weatherData && !this.state.error) &&
-                    <main className="blur">
-                        <h3>Weather Title</h3>
-                        <p>
-                            The high for today is %high_temp%, with a low of %low_temp%.
-                            There is %clouds%% cloud cover and the wind is blowing %windDir%.
-                        </p>
-                        <p>%date%</p>
-                    </main>
+                    <>
+                        <WeatherDisplay key="1" weatherData={this.state.weatherData[0]} />
+                        <WeatherDisplay key="2" weatherData={this.state.weatherData[1]} />
+                        <WeatherDisplay key="3" weatherData={this.state.weatherData[2]} />
+                    </>
                 }
             </>
         );

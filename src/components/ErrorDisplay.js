@@ -12,3 +12,5 @@ export class ErrorDisplay extends React.Component {
         );
     }
 }
+
+export default ErrorDisplay;
