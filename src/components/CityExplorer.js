@@ -51,18 +51,20 @@ class CityExplorer extends React.Component {
                 </form>
                 {
                     (this.state.data && !this.state.error) &&
-                    <CityDisplay data={this.state.data}/>
+                    <CityDisplay data={this.state.data} />
                 }
                 {
                     this.state.error &&
-                    <ErrorDisplay error={this.state.error.response.data.error}/>
+                    <ErrorDisplay error={this.state.error.response.data.error} />
                 }
                 {
                     (this.state.weatherData && !this.state.error) &&
                     <>
-                        <WeatherDisplay key="1" weatherData={this.state.weatherData[0]}/>
-                        <WeatherDisplay key="2" weatherData={this.state.weatherData[1]}/>
-                        <WeatherDisplay key="3" weatherData={this.state.weatherData[2]}/>
+                        {
+                            this.state.weatherData.map((day) => {
+                                return <WeatherDisplay key={day.date} date={day.date} highTemp={day.highTemp} lowTemp={day.lowTemp} clouds={day.clouds} windDir={day.windDir} />
+                            })
+                        }
                     </>
                 }
             </>
