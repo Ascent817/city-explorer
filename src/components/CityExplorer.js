@@ -5,7 +5,6 @@ import CityDisplay from "./CityDisplay.js";
 import ErrorDisplay from "./ErrorDisplay.js";
 import WeatherDisplay from "./WeatherDisplay.js";
 
-
 class CityExplorer extends React.Component {
     constructor(props) {
         super(props);
@@ -52,11 +51,11 @@ class CityExplorer extends React.Component {
                 </form>
                 {
                     (this.state.data && !this.state.error) &&
-                    <CityDisplay data={this.state.data}></CityDisplay>
+                    <CityDisplay data={this.state.data}/>
                 }
                 {
                     this.state.error &&
-                    <ErrorDisplay error={this.state.error.response.data.error}></ErrorDisplay>
+                    <ErrorDisplay error={this.state.error.response.data.error}/>
                 }
                 {
                     (this.state.weatherData && !this.state.error) &&
