@@ -30,7 +30,6 @@ class CityExplorer extends React.Component {
         try {
             let response = await axios.get(url);
             let weatherData = await axios.get(`https://city-explorer-server-ascent817.herokuapp.com/weather?searchQuery=${this.state.city}`);
-            console.log(weatherData.data);
 
             this.setState({
                 data: response.data[0],
@@ -62,9 +61,9 @@ class CityExplorer extends React.Component {
                 {
                     (this.state.weatherData && !this.state.error) &&
                     <>
-                        <WeatherDisplay key="1" weatherData={this.state.weatherData[0]} />
-                        <WeatherDisplay key="2" weatherData={this.state.weatherData[1]} />
-                        <WeatherDisplay key="3" weatherData={this.state.weatherData[2]} />
+                        <WeatherDisplay key="1" weatherData={this.state.weatherData[0]}/>
+                        <WeatherDisplay key="2" weatherData={this.state.weatherData[1]}/>
+                        <WeatherDisplay key="3" weatherData={this.state.weatherData[2]}/>
                     </>
                 }
             </>
