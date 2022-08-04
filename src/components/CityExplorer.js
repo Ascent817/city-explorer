@@ -62,7 +62,7 @@ class CityExplorer extends React.Component {
                     <>
                         {
                             this.state.weatherData.map((day) => {
-                                return <WeatherDisplay key={day.date} date={day.date} highTemp={day.highTemp} lowTemp={day.lowTemp} rain={day.rain} />
+                                return <WeatherDisplay key={day.date} date={day.date} highTemp={day.highTemp} lowTemp={day.lowTemp} rain={day.rain} description={day.description} />
                             })
                         }
                     </>
