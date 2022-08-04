@@ -28,7 +28,7 @@ class CityExplorer extends React.Component {
 
         try {
             let response = await axios.get(url);
-            let weatherData = await axios.get(`https://city-explorer-server-ascent817.herokuapp.com/weather?searchQuery=${this.state.city}`);
+            let weatherData = await axios.get(`https://city-explorer-server-ascent817.herokuapp.com/weather?searchQuery=${this.state.city}&lat=${response.data[0].lat}&lon=${response.data[0].lon}`);
 
             this.setState({
                 data: response.data[0],
@@ -62,7 +62,7 @@ class CityExplorer extends React.Component {
                     <>
                         {
                             this.state.weatherData.map((day) => {
-                                return <WeatherDisplay key={day.date} date={day.date} highTemp={day.highTemp} lowTemp={day.lowTemp} clouds={day.clouds} windDir={day.windDir} />
+                                return <WeatherDisplay key={day.date} date={day.date} highTemp={day.highTemp} lowTemp={day.lowTemp} rain={day.rain} />
                             })
                         }
                     </>

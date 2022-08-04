@@ -6,8 +6,8 @@ export class WeatherDisplay extends React.Component {
             <main className="blur">
                 <h3>Weather on {this.props.date}</h3>
                 <p>
-                    The high was {this.props.highTemp}°, with a low of {this.props.lowTemp}°.
-                    There was {this.props.clouds}% cloud cover and the wind was blowing {this.props.windDir.replace('-', ' ')}.
+                    The high will be {this.props.highTemp}°, with a low of {this.props.lowTemp}°.
+                    There is a {this.props.rain}% chance of rain.
                 </p>
             </main>
         );
