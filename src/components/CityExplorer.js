@@ -44,7 +44,7 @@ class CityExplorer extends React.Component {
 
     render() {
         return (
-            <>
+            <div className="grid">
                 <form className="flex blur search" onSubmit={this.handleSubmit}>
                     <ion-icon name="search"></ion-icon>
                     <input className="search-input" type="text" onChange={this.handleSearchChange} />
@@ -67,7 +67,7 @@ class CityExplorer extends React.Component {
                         }
                     </>
                 }
-            </>
+            </div>
         );
     }
 }

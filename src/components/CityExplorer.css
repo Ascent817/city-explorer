@@ -21,7 +21,6 @@
     border-radius: 40px;
     height: 40px;
     margin: 10px;
-    margin-top: 20px;
     transition: all 200ms ease-in-out 0ms;
 }
 
@@ -56,4 +55,27 @@ main {
 .map-image {
     width: 100%;
     border-radius: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 10vh 40vh 50vh;
+    grid-auto-flow: column;
+}
+
+
+main.blur:nth-child(2) {
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+main.blur:nth-child(3) {
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+main.blur:nth-child(5) {
+    grid-row-start: 1;
+    grid-row-end: 3;
 }

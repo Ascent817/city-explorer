@@ -4,7 +4,7 @@ export class CityDisplay extends React.Component {
     render() {
         return (
             <main className="blur">
-                <h3>{this.props.data.display_name}</h3>
+                <h3>{this.props.data.display_name.split(' ').filter((_val, index) => index < 4).join(' ')}</h3>
                 <p>
                     Latitude: {this.props.data.lat}<br/>
                     Longitude: {this.props.data.lon}
